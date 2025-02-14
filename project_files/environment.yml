@@ -1,0 +1,35 @@
+name: llm-annotation-env-test
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12.6
+  - ipykernel
+  - pre-commit
+  - black
+  # Core dependencies
+  - pip
+  - pip:
+    # Group 1 - Core utilities
+    - python-Levenshtein
+    - pandas
+    - streamlit
+    
+    # Group 2 - LLM related
+    - ollama
+    - llama-cpp-python
+    - sentence-transformers # added this later so hopefully works fine in order
+    
+    # Group 3 - ML and NLP
+    - matplotlib
+    - seaborn
+    - scikit-learn
+    - spacy
+    - gensim
+    
+    # Group 4 - Additional tools
+    - openpyxl
+    - streamlit-annotation-tools
+    - langchain
+    - langchain-community
+    - gliner

@@ -33,7 +33,7 @@ class QABase(ABC):
         self.root_dir = root_dir
         self.system_message = system_message or self.DEFAULT_SYSTEM_MSG
         self.entity_guidelines = EntityGuidelines(f"{root_dir}/data/guidelines.xlsx")
-        self.max_n_few_shots = 2
+        self.max_n_few_shots = 3
     
     def create_task_prompt(self, n_shots: int = 0, include_guidelines: bool = True) -> str:
         """Create the task prompt with optional few-shot examples."""

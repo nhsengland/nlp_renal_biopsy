@@ -21,84 +21,81 @@ Optional Steps:
 
 ## 📚 Installations
 
-### Setting up new conda environment and package installations
+### Setup and Sanity Check
 
-*This takes roughly 30 minutes.*
+*This takes roughly 20 minutes.*
 
 ```bash
+# 0. Make sure you are in a terminal which can run conda commands
+
 # 1. Clone the repository
 git clone [repository_url]
 cd [repository_name]
 
-# 2. Create and setup conda environment
-conda create --name gosh-llm python=3.12.6
-conda activate gosh-llm
-conda install ipykernel
-python -m ipykernel install --user --name=gosh-llm --display-name "gosh-llm (ipython)"
-
-# 3. First pip installations 
-pip install python-Levenshtein pandas streamlit
-
-# 4. Install ollama and models
-pip install ollama
-ollama pull [model_name] # qwen2.5:1.5b-instruct-fp16 recommended as a good initial model
-# If using llama-cpp:
-mkdir models  # Create models directory
-# Download GGUF models from HuggingFace and place in models/
-# Ensure models/ is in .gitignore
-
-# 5. Install ML and NLP packages
-pip install matplotlib seaborn scikit-learn spacy gensim
-python -m spacy download en_core_web_sm
-# Note: If numpy dtype issues occur after gensim, restart notebook kernel
-
-# 6. Final installations
-pip install openpyxl streamlit-annotation-tools langchain langchain-community gliner llama-cpp-python
+# 2. Run setup
+setup.bat
 ```
+
+*Following commands take roughly 5 minutes.*
+
+Note: the paper results use llama3.2:3b-instruct-fp16 as the LAAJ but we use gemma2:2b-instruct-fp16 so an extra model doesn't need to be downloaded.
+
+Run LLM annotation over synthetic data as a sanity check:
+```bash
+python rb_script.py --backend ollama --root_dir src/renal_biopsy --model_name qwen2.5:1.5b-instruct-fp16 --n_shots 2 --n_prototype 2 --include_guidelines --raw_data synthetic_data.xlsx --annotated_reports synthetic_annotations.json
+```
+- You should observe the following results ![alt text](project_files/synthetic_results.png).
+- Check the outputs in src/renal_biopsy/data/runs/{timestamp}/predicted.json match project_files/annotation_results/qwen_annotations.json.
+
+
+Run alternative model annotation over synthetic data as a sanity check:
+```bash
+python rb_alt_models_script.py --root_dir src/renal_biopsy/data --data_file synthetic_data.xlsx --annotated_reports_file synthetic_annotations.json --output_dir src/renal_biopsy/data/runs/alt_models
+```
+- Check the outputs in src/renal_biopsy/data/run/alt_models/evaluation_results.json match project_files/annotation_results/alt_model_results.json.
+
+Run disagreement modelling over synthetic data as a sanity check:
+```bash
+python rb_disagreement_script.py --backend ollama --root_dir src/renal_biopsy --model_1_name qwen2.5:1.5b-instruct-fp16 --model_2_name gemma2:2b-instruct-fp16 --n_shots 2 --n_prototype 2 --disagreement_threshold 0.2 --include_guidelines --raw_data synthetic_data.xlsx
+```
+- Check the outputs (predicted.json files and entity_answers_over_corpus.json) in src/renal_biopsy/data/runs/{timestamp}/ match project_files/disagreement_results/.
+
 
 ### Usage
 
 ```bash
 # 1. Activate conda environment
-conda activate gosh-llm
+conda activate llm-annotation-env-test
 
-# 2. Run annotation app
+# 2. Create input json (to be annotated) from raw data
+python setup_input_json.py --guidelines guidelines.xlsx --raw_data [name of raw data]
+
+# 3. Run annotation app
 streamlit run src/renal_biopsy/annotation_app.py src/renal_biopsy src/renal_biopsy/data/real_input.json
 
-# 3. Run LLM annotation and evaluation
-python rb_script.py --backend [ollama/llamacpp] \
-   --root_dir src/renal_biopsy \
-   --model_name [model_name] \
-   --n_shots [n_few_shot_samples] \
-   --n_prototype [n_annotated_samples] \
-   --include_guidelines
+# 4. Run alternative model annotation and evaluation
+python rb_alt_models_script.py --root_dir src/renal_biopsy/data --data_file [raw report data] --annotated_reports_file [annotated data] --output_dir [output directory to save results]
+
+# 5. Run LLM annotation and evaluation
+python rb_script.py --backend [ollama/llamacpp] --root_dir src/renal_biopsy --model_name [model_name] --n_shots [n_few_shot_samples] --n_prototype [n_annotated_samples] --include_guidelines --raw_data [raw report data] --annotated_reports [annotated data]
 # As a good initial test, we recommend the command below:
 # python rb_script.py --backend ollama --root_dir src/renal_biopsy --model_name qwen2.5:1.5b-instruct-fp16 --n_shots 1 --n_prototype 1 --include_guidelines
 
-# 4. Run disagreement modeling between two models 
-python rb_disagreement_script.py --backend [ollama/llamacpp] \
-   --root_dir src/renal_biopsy \
-   --model_1_name [model_1_name] \
-   --model_2_name [model_2_name] \
-   --n_shots [n_few_shot_samples] \
-   --n_prototype [n_annotated_samples] \
-   --disagreement_threshold [threshold] \
-   --include_guidelines
+# 6. Additional notebooks available for debugging:
+# - eda.ipynb: for exploratory data analysis
+# - redo_json_parsing.ipynb: for analysing parsing errors with any LLMs
+# - update_laaj_and_eval.ipynb: for tweaking the LLM-as-a-Judge prompt and subsequently redoing the evaluation.
+
+# 7. Run disagreement modeling between two models 
+python rb_disagreement_script.py --backend [ollama/llamacpp] --root_dir src/renal_biopsy --model_1_name [model_1_name] --model_2_name [model_2_name] --n_shots [n_few_shot_samples] --n_prototype [n_annotated_samples] --disagreement_threshold [threshold] --include_guidelines --raw_data [raw report data]
 # As a good initial test, we recommend the two commands below:
 # ollama pull gemma2:2b-instruct-fp16
 # python rb_disagreement_script.py --backend ollama --root_dir src/renal_biopsy --model_1_name qwen2.5:1.5b-instruct-fp16 --model_2_name gemma2:2b-instruct-fp16 --n_shots 1 --n_prototype 1 --disagreement_threshold 0.3 --include_guidelines
 
-# 5. View disagreements in comparison app
-streamlit run src/renal_biopsy/comparison_app.py \
-   src/renal_biopsy \
-   data/runs/{timestamp} \
-   [n_annotated_samples]
+# 8. View disagreements in comparison app
+streamlit run src/renal_biopsy/comparison_app.py src/renal_biopsy data/runs/{timestamp} [n_annotated_samples]
 # Note: if there are no disagreements, this won't be able to run.
 # TODO: comparison_comments.json currently saves to root directory, fix to save in timestamped folder.
-
-# 6. Additional notebooks available:
-# - renal_biopsy.ipynb: For exploratory data analysis and model debugging
-# - alt_methods.ipynb: For standard NER-based methods
 ```
 
 ### Adapting this project to your own area of biomedicine
@@ -163,11 +160,22 @@ For any queries, please contact us via email pavithra.rajendran@gosh.nhs.uk.
 
 ##  🧑🏽‍🤝‍🧑🏽 Citing & Authors
 
-To be updated
+If you find this repository helpful, feel free to cite our publication [Resource Constrained Annotation Workflows for Paediatric Histopathology Reports](to be updated):
+
+```
+@article{
+    title = "Resource Constrained Annotation Workflows for Paediatric Histopathology Reports",
+    author = "Vijayaraghavan, Avish and Kawatra, Jaskaran Singh and Sabu, Sebin and Rigny, Louise and Howes, Seth and Sheldon, Jonny and Poulett, Will and Sebire, Neil and Pearson, Jonny and Schofield, Dan and Rajendran, Pavi and Hope, Jonathan",
+    booktitle = "to be updated",
+    month = "to be updated",
+    year = "to be updated",
+    publisher = "to be updated",
+    url = "to be updated",
+}
+```
 
 ## 📃 Licenses
 
 Code is this repository is covered by the GNU General Public License and for all documentation the [Open Government License (OGL)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) is used.
 
 Copyright (c) 2024 Crown Copyright
-

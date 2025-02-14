@@ -1,0 +1,30 @@
+[
+    {
+        "microscopy_section": " SECTION: Biopsy composed of cortex and medulla with 45 glomeruli, all of which show no morphological abnormality. There is 0 chronic change. The tubules, interstitium and vessels appear normal. Immunohistochemical staining is negative for CMV.",
+        "conclusion_section": " SECTION: RENAL BIOPSY: NO EVIDENCE OF REJECTION",
+        "cortex_present": "True",
+        "medulla_present": "True",
+        "n_total": "45",
+        "n_segmental": "0",
+        "n_global": "0",
+        "abnormal_glomeruli": "False",
+        "chronic_change": "0",
+        "transplant": "False",
+        "diagnosis": "No rejection",
+        "clinician_check": false
+    },
+    {
+        "microscopy_section": " SECTION: Biopsy composed of cortex and medulla with 38 glomeruli. One glomerulus has global sclerosis, while one has segmental sclerosis. Two glomeri has abnormal mesangial thickening. There are areas of patchy tubular atrophy and interstitial fibrosis over 30% of the biopsy.",
+        "conclusion_section": " SECTION: RENAL BIOPSY: SEVERE CHRONIC VASCULAR DAMAGE",
+        "cortex_present": "True",
+        "medulla_present": "True",
+        "n_total": "38",
+        "n_segmental": "1",
+        "n_global": "1",
+        "abnormal_glomeruli": "True",
+        "chronic_change": "30",
+        "transplant": "False",
+        "diagnosis": "Severe chronic vascular damage",
+        "clinician_check": false
+    }
+]

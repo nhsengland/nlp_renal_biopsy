@@ -1,0 +1,11 @@
+data/
+report/figs/
+/data/
+data/
+/runs/
+/models/
+/annotations_output/
+
+__pycache__/
+__pycache__/models/
+src/renal_biopsy/data/

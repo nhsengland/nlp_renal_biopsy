@@ -1,0 +1,204 @@
+{
+    "final_scores": {
+        "spaCy": 0.012,
+        "BioBERT": 0.012,
+        "RoBERTa": 0.012,
+        "GLiNER": 0.012
+    },
+    "entity_scores": {
+        "spaCy": {
+            "cortex_present": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "medulla_present": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "n_total": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "n_segmental": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "n_global": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "abnormal_glomeruli": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "chronic_change": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "transplant": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "diagnosis": {
+                "correct": 0,
+                "total": 2,
+                "accuracy": 0.0
+            }
+        },
+        "BioBERT": {
+            "cortex_present": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "medulla_present": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "n_total": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "n_segmental": {
+                "correct": 0,
+                "total": 2,
+                "accuracy": 0.0
+            },
+            "n_global": {
+                "correct": 0,
+                "total": 2,
+                "accuracy": 0.0
+            },
+            "abnormal_glomeruli": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "chronic_change": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "transplant": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "diagnosis": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            }
+        },
+        "RoBERTa": {
+            "cortex_present": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "medulla_present": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "n_total": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "n_segmental": {
+                "correct": 0,
+                "total": 2,
+                "accuracy": 0.0
+            },
+            "n_global": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "abnormal_glomeruli": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "chronic_change": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "transplant": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "diagnosis": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            }
+        },
+        "GLiNER": {
+            "cortex_present": {
+                "correct": 0,
+                "total": 2,
+                "accuracy": 0.0
+            },
+            "medulla_present": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "n_total": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "n_segmental": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "n_global": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "abnormal_glomeruli": {
+                "correct": 2,
+                "total": 2,
+                "accuracy": 100.0
+            },
+            "chronic_change": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "transplant": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            },
+            "diagnosis": {
+                "correct": 1,
+                "total": 2,
+                "accuracy": 50.0
+            }
+        }
+    },
+    "processing_times": {
+        "spaCy": 0.01138773759206136,
+        "BioBERT": 0.13331154187520344,
+        "RoBERTa": 0.0639822761217753,
+        "GLiNER": 0.05167161623636882
+    }
+}

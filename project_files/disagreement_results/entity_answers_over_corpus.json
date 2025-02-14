@@ -1,0 +1,24 @@
+[
+    {
+        "cortex_present": true,
+        "medulla_present": true,
+        "n_total": true,
+        "n_segmental": true,
+        "n_global": true,
+        "abnormal_glomeruli": true,
+        "chronic_change": true,
+        "transplant": true,
+        "diagnosis": true
+    },
+    {
+        "cortex_present": true,
+        "medulla_present": true,
+        "n_total": true,
+        "n_segmental": true,
+        "n_global": true,
+        "abnormal_glomeruli": true,
+        "chronic_change": true,
+        "transplant": true,
+        "diagnosis": true
+    }
+]

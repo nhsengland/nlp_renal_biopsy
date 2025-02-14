@@ -1,0 +1,24 @@
+[
+    {
+        "cortex_present": "True", 
+        "medulla_present": "True",
+        "n_total": "45", 
+        "n_segmental": "0",
+        "n_global": "0", 
+        "abnormal_glomeruli": "False",
+        "chronic_change": "0", 
+        "transplant": "True",
+        "diagnosis": "No rejection"
+    },
+    {
+        "cortex_present": "True", 
+        "medulla_present": "True",
+        "n_total": "38", 
+        "n_segmental": "1", 
+        "n_global": "1", 
+        "abnormal_glomeruli": "True",
+        "chronic_change": "30", 
+        "transplant": "False",
+        "diagnosis": "Severe chronic vascular damage"
+    }
+]
