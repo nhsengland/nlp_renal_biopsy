@@ -2,7 +2,7 @@
 
 [![status: experimental](https://github.com/GIScience/badges/raw/master/status/experimental.svg)](https://github.com/GIScience/badges#experimental) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-:warning: **This repository is experimental and thus models generated and attacked using this repository are not suitable to deploy into a production environment without further testing and evaluation.** :warning:
+:warning: **This repository is experimental and so the current workflow is not suitable to deploy into a production environment without further testing and evaluation.** :warning:
 
 ## 🚀 Introduction
 
