@@ -164,12 +164,12 @@ For any queries, please contact us via email pavithra.rajendran@gosh.nhs.uk.
 
 ##  🧑🏽‍🤝‍🧑🏽 Citing & Authors
 
-If you find this repository helpful, feel free to cite our publication [Resource Constrained Annotation Workflows for Paediatric Histopathology Reports](to be updated):
+If you find this repository helpful, feel free to cite our publication [Resource Constrained Annotation Workflows for Paediatric Histopathology Reports using SLMs](to be updated):
 
 ```
 @article{
-    title = "Resource Constrained Annotation Workflows for Paediatric Histopathology Reports",
-    author = "Vijayaraghavan, Avish and Kawatra, Jaskaran Singh and Sabu, Sebin and Rigny, Louise and Howes, Seth and Sheldon, Jonny and Poulett, Will and Sebire, Neil and Pearson, Jonny and Schofield, Dan and Rajendran, Pavi and Hope, Jonathan",
+    title = "Resource Constrained Annotation Workflow for Paediatric Histopathology Reports using SLMs",
+    author = "to be updated",
     booktitle = "to be updated",
     month = "to be updated",
     year = "to be updated",
